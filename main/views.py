@@ -59,7 +59,6 @@ class PortfolioDetailView(generic.DetailView):
 class BlogView(generic.ListView):
 	model = Blog
 	template_name = "main/blog.html"
-	paginate_by = 10
 	
 	def get_queryset(self):
 		return super().get_queryset().filter(is_active=True)

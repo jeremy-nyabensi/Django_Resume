@@ -1,11 +1,20 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% extends 'main/base.html' %} {% load static %}
 
 <!-- ================================
 Start SEO blocks
 ================================= -->
 {% block title %}{% endblock %}
+
+<!-- ================================
+END Title
+================================= -->
+
 {% block decription %}{% endblock %}
+
+<!-- ================================
+END Description
+================================= -->
+
 {% block keywords %}{% endblock %}
 <!-- ================================
 END SEO blocks
@@ -34,7 +43,7 @@ Start Content
 <section>
   <div class="innerPageBannerCol">
     <div class="container">
-      <div class="row g-4 g-md-3  align-items-center">
+      <div class="row g-4 g-md-3 align-items-center">
         <div class="col-md-6">
           <div class="bannerContent">
             <h1 class="xlTitle pb-md-3">See my recent blogs below</h1>
@@ -52,21 +61,24 @@ Start Content
         <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
           {% for obj in object_list %}
           <div class="col-md-6 pColMain">
-            <div class="pCol">
-              <a href="{% url 'main:blog' slug=obj.slug %}" >
-              <img src="{{obj.image.url}}" alt="..." class="pImg">
+            <div class="pCol" style="margin: 10px">
+              <a href="{% url 'main:blog' slug=obj.slug %}">
+                {% if obj.image %}
+                <img src="{{ obj.image.url }}" alt="..." class="pImg" />
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
               </a>
             </div>
           </div>
           {% endfor %}
-
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- ================================
 End Content
 ================================= -->
-{%endblock%} 
-    
+{%endblock%}
